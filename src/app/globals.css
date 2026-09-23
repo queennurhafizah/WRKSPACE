@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivory text-ink font-sans antialiased;
+  }
+
+  /* Heading pakai Bricolage Grotesque (Primary font) */
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-brand/25 text-brand-deep;
+  }
+}
+
+@layer components {
+  /* Dot grid retro dekoratif */
+  .dot-grid {
+    background-image: radial-gradient(
+      circle,
+      rgba(26, 26, 26, 0.12) 1.4px,
+      transparent 1.4px
+    );
+    background-size: 14px 14px;
+  }
+
+  /* Kontainer standar */
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Accent font utility — Caveat untuk tagline & highlight */
+  .font-accent {
+    font-family: var(--font-caveat), cursive;
+  }
+}
+
+@layer utilities {
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Sembunyikan Navbar & Footer Publik saat mencetak PDF */
+@media print {
+  /* Sembunyikan header navbar dan footer bawaan website */
+  header,
+  footer,
+  nav {
+    display: none !important;
+  }
+
+  /* Hilangkan margin/padding luar agar PDF rapi */
+  body {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Hilangkan garis/efek URL otomatis dari browser */
+  a[href]:after {
+    content: none !important;
+  }
+}
