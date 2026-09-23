@@ -48,6 +48,7 @@ export function AvailabilityChecker({
         durasi_jam: durasi,
         harga_per_jam: hargaPerJam,
         estimasi_total: 0,
+        conflicts: [],
       });
       setError(
         e instanceof ApiError
